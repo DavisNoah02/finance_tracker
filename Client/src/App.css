@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,135 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/*  *  */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+}
+.header h1 {
+  margin: 0;
+}
+.header div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.header button, .header a {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.header button:hover, .header a:hover {
+  text-decoration: underline;
+}
+
+/* ExoenseForm.css */
+.expense-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form div {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #218838;
+}
+.error {
+  color: red;
+}
+/* ExpenseList.css */
+.expense-list {
+  max-width: 600px;
+  margin: 20px auto;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #c82333;
+}
+.error {
+  color: red;
+}
+/* Login.css */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+.error {
+  color: red;
+}
+form div {
+  margin-bottom: 15px;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
 }

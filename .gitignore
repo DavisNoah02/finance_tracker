@@ -24,13 +24,13 @@ dist-ssr
 *.sw?
 
 # Backend
-expenseTracker-backend/.env
-expenseTracker-backend/firebase-key.json
+Server/.env
+Server/firebase-key.json
 expenseTracker-backend/__pycache__/
 # Frontend
-expenseTracker-frontend/node_modules/
-expenseTracker-frontend/dist/
-expenseTracker-frontend/src/.env
+Client/node_modules/
+Client/dist/
+Client/src/.env
 
 # General
 .DS_Store
