@@ -1,5 +1,5 @@
 {
-  "name": "expensetracker-frontend",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,6 @@
     "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
     "axios": "^1.8.4",
-    "firebase": "^11.6.0",
     "flask-cors": "^0.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,0 +1,8 @@
+flask==2.3.3
+flask-cors==4.0.0
+python-dotenv==1.0.0
+flask-sqlalchemy==3.1.1
+pyrebase4==4.7.1  # For Firebase Authentication
+firebase-admin==6.5.0  # Explicitly add for clarity
+
+#flask-migrate==4.0.0  # For database migrations

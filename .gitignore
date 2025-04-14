@@ -26,7 +26,7 @@ dist-ssr
 # Backend
 Server/.env
 Server/firebase-key.json
-expenseTracker-backend/__pycache__/
+Server/__pycache__/
 # Frontend
 Client/node_modules/
 Client/dist/
