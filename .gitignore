@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Backend
+expenseTracker-backend/.env
+expenseTracker-backend/firebase-key.json
+expenseTracker-backend/__pycache__/
+# Frontend
+expenseTracker-frontend/node_modules/
+expenseTracker-frontend/dist/
+expenseTracker-frontend/src/.env
+
+# General
+.DS_Store
