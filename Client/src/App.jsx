@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
+import  "./App.css";
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
