@@ -1,33 +1,52 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthContext";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import LoginPage from "./pages/LoginPage";
-import  "./App.css";
+import React, { useEffect } from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-function PrivateRoute({ children }) {
-  const { user, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
-  return user ? children : <Navigate to="/login" />;
-}
+import Login from "./components/Login";
+import SignUp from "./components/register";
+import ForgotPassword from "./components/forgotpassword";
 
-export default function App() {
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Profile from "./components/profile";
+import { useState } from "react";
+import { auth } from "./components/firebase";
+import { header } from "./components/Header";
+
+function App() {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  });
   return (
-    <AuthProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <Home />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <div className="App">
+        <div className="auth-wrapper">
+          <div className="auth-inner">
+            <Routes>
+              <Route
+                path="/"
+                element={user ? <Navigate to="/profile" /> : <Login />}
+              />
+              <Route path="/header" element={<Header />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/forgotpassword" element={<ForgotPassword />} />
+            </Routes>
+            <ToastContainer />
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
+
+export default App;

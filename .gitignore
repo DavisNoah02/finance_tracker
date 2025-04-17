@@ -34,3 +34,9 @@ Client/src/.env
 
 # General
 .DS_Store
+
+.env.local
+.env.development
+.env.production
+
+.env

@@ -1,61 +1,69 @@
-import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { auth } from "./firebase";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import SignInwithGoogle from "./signInWIthGoogle";
 
-export default function Login() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignup, setIsSignup] = useState(false);
-  const [error, setError] = useState("");
-  const { login, signup } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
     try {
-      if (isSignup) {
-        await signup(email, password);
-      } else {
-        await login(email, password);
-      }
-      navigate("/");
-    } catch (err) {
-      setError(err.message);
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("User logged in Successfully", { position: "top-center" });
+      navigate("/profile"); // Redirect after successful login
+    } catch (error) {
+      toast.error(error.message, { position: "bottom-center" });
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>{isSignup ? "Sign Up" : "Login"}</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="mb-3">
+          <label>Email address</label>
           <input
             type="email"
+            className="form-control"
+            placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Password:</label>
+
+        <div className="mb-3">
+          <label>Password</label>
           <input
             type="password"
+            className="form-control"
+            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
+
+        <div className="d-grid">
+          <button type="submit" className="btn btn-primary">Login</button>
+        </div>
       </form>
-      <p>
-        {isSignup ? "Already have an account?" : "Need an account?"}
-        <button onClick={() => setIsSignup(!isSignup)}>
-          {isSignup ? "Login" : "Sign Up"}
-        </button>
+
+      <p style={{ fontSize: "small", margin: "1rem 0 1rem 0"}}>
+        Don't have an account? <Link to="/register">Register</Link>
       </p>
+      <p style={{ fontSize: "small", marginBottom: "1rem" }}>
+        Forgot your password? <Link to="/forgotpassword">Forgot Password</Link>
+      </p>
+
+      <SignInwithGoogle />
     </div>
   );
 }
+
+export default Login;
