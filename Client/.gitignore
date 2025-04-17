@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Frontend
+Client/node_modules/
+Client/dist/
+Client/src/.env
