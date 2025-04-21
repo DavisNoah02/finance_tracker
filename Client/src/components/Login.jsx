@@ -1,69 +1,49 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
-import { auth } from "./firebase";
-import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
-import SignInwithGoogle from "./signInWIthGoogle";
+// Example: src/components/Login.jsx
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Login() {
+export default function Login({ onLogin, error }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("User logged in Successfully", { position: "top-center" });
-      navigate("/"); // Redirect to home page after successful login
-    } catch (error) {
-      toast.error(error.message, { position: "bottom-center" });
-    }
-  };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">Login</button>
-        </div>
+    <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-lg shadow">
+      <h2 className="text-2xl font-bold text-center text-blue-700 mb-6">Login</h2>
+      {error && <div className="mb-4 text-red-600 text-center">{error}</div>}
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          onLogin(email, password);
+        }}
+        className="space-y-4"
+      >
+        <input
+          type="email"
+          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800 transition"
+        >
+          Login
+        </button>
       </form>
-
-      <p style={{ fontSize: "small", margin: "1rem 0 1rem 0"}}>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-      <p style={{ fontSize: "small", marginBottom: "1rem" }}>
-        Forgot your password? <Link to="/forgotpassword">Forgot Password</Link>
-      </p>
-
-      <SignInwithGoogle />
+      <div className="flex justify-between mt-4 text-sm">
+        <Link to="/forgotpassword" className="text-blue-600 hover:underline">Forgot Password?</Link>
+        <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
+      </div>
     </div>
   );
 }
-
-export default Login;

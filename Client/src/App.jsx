@@ -15,7 +15,10 @@ function PrivateRoute({ children }) {
 
 export default function App() {
   return (
+    
     <div className="App"> {/* Apply styles here */}
+    <h1 className="text-3xl font-bold text-green-500">Tailwind is finally working!</h1>
+
       <AuthProvider>
         <Router>
           <Header />
