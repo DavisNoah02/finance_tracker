@@ -21,7 +21,7 @@ export default function ExpenseForm() {
       setDescription("");
       setAmount("");
       setCategory("");
-    } catch (err) {
+    } catch {
       setError("Failed to add expense");
     }
   };

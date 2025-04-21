@@ -15,7 +15,7 @@ function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("User logged in Successfully", { position: "top-center" });
-      navigate("/profile"); // Redirect after successful login
+      navigate("/"); // Redirect to home page after successful login
     } catch (error) {
       toast.error(error.message, { position: "bottom-center" });
     }

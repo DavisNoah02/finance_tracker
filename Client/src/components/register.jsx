@@ -29,7 +29,7 @@ function Register() {
 
       toast.success("User Registered Successfully!!", { position: "top-center" });
 
-      // ✅ Redirect to login page after successful registration
+      // Redirect to login page after successful registration
       navigate("/login");
       
     } catch (error) {

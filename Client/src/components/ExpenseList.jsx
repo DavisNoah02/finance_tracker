@@ -13,7 +13,7 @@ export default function ExpenseList() {
         const token = await user.getIdToken();
         const data = await getExpenses(token);
         setExpenses(data);
-      } catch (err) {
+      } catch  {
         setError("Failed to fetch expenses");
       }
     };
@@ -25,7 +25,7 @@ export default function ExpenseList() {
       const token = await user.getIdToken();
       await deleteExpense(id, token);
       setExpenses(expenses.filter((expense) => expense.id !== id));
-    } catch (err) {
+    } catch {
       setError("Failed to delete expense");
     }
   };
